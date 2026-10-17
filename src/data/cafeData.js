@@ -12,7 +12,7 @@ export const cafeInfo = {
     mapsUrl: "https://www.google.com/maps/place/Carter+Rd,+Bandra+West,+400050/@19.0593156,72.8193365,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7c96bda2c82cd:0xb264afc7c14ea246!8m2!3d19.0593105!4d72.8219114!16s%2Fg%2F11y1kzm2h8?entry=ttu&g_ep=EgoyMDI2MTAxNC4wIKXMDSoASAFQAw%3D%3D",
   },
   contact: {
-    phone: "++91 9892409460",
+    phone: "+91 9892409460",
     phoneHref: "tel:+9892409460",
     whatsapp: "+1 (206) 555-0184",
     whatsappHref: "https://wa.me/12065550184?text=Hello%20WOAT%20Cafe%2C%20I%20would%20like%20to%20inquire%20about...",
