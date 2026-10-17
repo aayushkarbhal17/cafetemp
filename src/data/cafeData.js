@@ -14,8 +14,8 @@ export const cafeInfo = {
   contact: {
     phone: "+91 9892409460",
     phoneHref: "tel:+9892409460",
-    whatsapp: "+1 (206) 555-0184",
-    whatsappHref: "https://wa.me/12065550184?text=Hello%20WOAT%20Cafe%2C%20I%20would%20like%20to%20inquire%20about...",
+    whatsapp: "+91 9892409460",
+    whatsappHref: "https://wa.me/9892409460?text=Hello%20WOAT%20Cafe%2C%20I%20would%20like%20to%20inquire%20about...",
     email: "hello@woatcafe.com",
     emailHref: "mailto:hello@woatcafe.com",
   },
