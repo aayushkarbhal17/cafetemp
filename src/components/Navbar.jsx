@@ -4,16 +4,30 @@ import { cafeInfo, navLinks } from '../data/cafeData';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 24);
+      setIsScrolled(window.scrollY > 20);
+
+      // Simple active section detection
+      const sections = ['hero', 'menu', 'ambiance', 'about', 'visit'];
+      const scrollPos = window.scrollY + 140;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent body scroll when mobile menu is open
+  // Prevent background scroll when mobile drawer is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -25,7 +39,7 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  // Handle escape key to close menu
+  // Close drawer on escape key
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && mobileMenuOpen) {
@@ -43,28 +57,38 @@ export default function Navbar() {
       <header className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
         <div className="container navbar-container">
           {/* Brand Logo */}
-          <a href="#" className="navbar-brand" onClick={closeMenu}>
-            <span className="brand-mark">WOAT</span>
-            <span className="brand-sub">Specialty Coffee</span>
+          <a href="#hero" className="navbar-brand" onClick={closeMenu} aria-label="WOAT Café Home">
+            <span className="brand-mark">{cafeInfo.name}</span>
+            <span className="brand-sub">{cafeInfo.subtitle}</span>
           </a>
 
           {/* Desktop Navigation Links */}
           <nav className="desktop-nav" aria-label="Main Navigation">
             <ul className="nav-links">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="nav-link">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const targetId = link.href.replace('#', '');
+                const isActive = activeSection === targetId;
+                return (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className={`nav-link ${isActive ? 'is-active' : ''}`}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
-          {/* Right Header Action */}
+          {/* Right Header Actions */}
           <div className="navbar-actions">
+            <a href="#visit" className="nav-secondary-link">
+              Find Us
+            </a>
             <a href="#menu" className="btn btn-primary nav-cta-btn">
-              <span>View Menu</span>
+              <span>Explore the Menu</span>
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -87,7 +111,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Menu Backdrop & Drawer */}
+      {/* Mobile Drawer */}
       <div 
         id="mobile-nav-drawer"
         className={`mobile-drawer ${mobileMenuOpen ? 'is-open' : ''}`} 
@@ -96,9 +120,9 @@ export default function Navbar() {
         <div className="mobile-drawer-overlay" onClick={closeMenu}></div>
         <div className="mobile-drawer-content">
           <div className="mobile-drawer-header">
-            <a href="#" className="navbar-brand" onClick={closeMenu}>
-              <span className="brand-mark">WOAT</span>
-              <span className="brand-sub">Specialty Coffee</span>
+            <a href="#hero" className="navbar-brand" onClick={closeMenu}>
+              <span className="brand-mark">{cafeInfo.name}</span>
+              <span className="brand-sub">{cafeInfo.subtitle}</span>
             </a>
             <button
               type="button"
@@ -115,8 +139,12 @@ export default function Navbar() {
             <nav aria-label="Mobile Navigation">
               <ul className="mobile-nav-list">
                 {navLinks.map((link, idx) => (
-                  <li key={link.href} style={{ animationDelay: `${(idx + 1) * 60}ms` }}>
-                    <a href={link.href} className="mobile-nav-link" onClick={closeMenu}>
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className={`mobile-nav-link ${activeSection === link.href.replace('#', '') ? 'is-active' : ''}`}
+                      onClick={closeMenu}
+                    >
                       <span className="mobile-link-num">0{idx + 1}</span>
                       <span className="mobile-link-text">{link.label}</span>
                     </a>
@@ -127,7 +155,10 @@ export default function Navbar() {
 
             <div className="mobile-drawer-cta">
               <a href="#menu" className="btn btn-primary mobile-menu-btn" onClick={closeMenu}>
-                Explore Signature Menu
+                Explore the Menu
+              </a>
+              <a href="#visit" className="btn btn-secondary mobile-menu-btn" onClick={closeMenu} style={{ marginTop: '0.65rem' }}>
+                Find Us & Hours
               </a>
             </div>
 
@@ -137,12 +168,12 @@ export default function Navbar() {
                 <p>{cafeInfo.address.full}</p>
               </div>
               <div className="mobile-info-block">
-                <span className="mobile-info-label">Today's Hours</span>
-                <p>7:00 AM – 6:00 PM</p>
+                <span className="mobile-info-label">Hours Today</span>
+                <p>7:00 AM – 5:00 PM</p>
               </div>
               <div className="mobile-drawer-contact-links">
                 <a href={cafeInfo.contact.phoneHref} className="mobile-contact-item">
-                  <span>Call Us:</span> {cafeInfo.contact.phone}
+                  <span>Call:</span> {cafeInfo.contact.phone}
                 </a>
                 <a href={cafeInfo.contact.whatsappHref} target="_blank" rel="noopener noreferrer" className="mobile-contact-item">
                   WhatsApp Inquiries ↗

@@ -8,7 +8,7 @@ export default function Hero() {
         <div className="hero-content">
           <div className="hero-badge-wrap">
             <span className="hero-status-dot" aria-hidden="true"></span>
-            <span className="hero-badge-text">Open Today · 7:00 AM – 6:00 PM</span>
+            <span className="hero-badge-text">Open Today · 7:00 AM – 5:00 PM</span>
           </div>
 
           <h1 className="hero-title">
@@ -32,7 +32,7 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Editorial Metrics */}
+          {/* Quick Metrics */}
           <div className="hero-metrics">
             {heroData.stats.map((stat, idx) => (
               <div key={idx} className="hero-metric-item">
@@ -43,7 +43,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Column: Photographic Composition */}
+        {/* Right Column: Editorial Photographic Composition */}
         <div className="hero-visual">
           <div className="hero-image-wrapper">
             <div className="hero-image-frame">
@@ -58,25 +58,38 @@ export default function Hero() {
               <div className="hero-image-vignette" aria-hidden="true"></div>
             </div>
 
-            {/* Floating Editorial Badges - safely positioned outside overflow mask */}
+            {/* Floating Editorial Badges */}
             <div className="hero-floating-card top-card">
               <div className="floating-card-icon" aria-hidden="true">☕</div>
               <div className="floating-card-text">
                 <span className="floating-card-title">Seasonal Harvest</span>
-                <span className="floating-card-sub">Ethiopia Guji Uraga</span>
+                <span className="floating-card-sub">Ethiopia Guji Uraga · 88+ Cup</span>
               </div>
             </div>
 
             <div className="hero-floating-card bottom-card">
-              <div className="floating-card-badge">88+ CUP</div>
+              <div className="floating-card-badge">EST. 2021</div>
               <div className="floating-card-text">
-                <span className="floating-card-title">Direct Micro-Roast</span>
-                <span className="floating-card-sub">Roasted Weekly in Seattle</span>
+                <span className="floating-card-title">Carter Rd · Bandra West</span>
+                <span className="floating-card-sub">Slow Living Sanctuary</span>
               </div>
             </div>
           </div>
           
           <div className="hero-composition-backdrop" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      {/* Compact Visual Strip: Up to three genuine selling points */}
+      <div className="container hero-selling-strip-wrap">
+        <div className="hero-selling-strip">
+          {heroData.sellingPoints.map((item, idx) => (
+            <div key={idx} className="selling-point-card">
+              <span className="selling-point-kicker">{item.kicker}</span>
+              <h3 className="selling-point-title">{item.title}</h3>
+              <p className="selling-point-desc">{item.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

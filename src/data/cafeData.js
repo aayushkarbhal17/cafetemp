@@ -13,9 +13,15 @@ export const cafeInfo = {
   },
   contact: {
     phone: "+91 9892409460",
+<<<<<<< HEAD
     phoneHref: "tel:+9892409460",
     whatsapp: "+91 9892409460",
     whatsappHref: "https://wa.me/9892409460?text=Hello%20WOAT%20Cafe%2C%20I%20would%20like%20to%20inquire%20about...",
+=======
+    phoneHref: "tel:+919892409460",
+    whatsapp: "+1 (206) 555-0184",
+    whatsappHref: "https://wa.me/12065550184?text=Hello%20WOAT%20Cafe%2C%20I%20would%20like%20to%20inquire%20about...",
+>>>>>>> b1abfff (Update cafe template)
     email: "hello@woatcafe.com",
     emailHref: "mailto:hello@woatcafe.com",
   },
@@ -35,15 +41,15 @@ export const cafeInfo = {
 };
 
 export const navLinks = [
-  { label: "Our Story", href: "#story" },
-  { label: "Craft & Roast", href: "#craft" },
-  { label: "Signature Menu", href: "#menu" },
-  { label: "Atmosphere", href: "#atmosphere" },
-  { label: "Visit & Hours", href: "#visit" },
+  { label: "Home", href: "#hero" },
+  { label: "Menu", href: "#menu" },
+  { label: "Ambiance", href: "#ambiance" },
+  { label: "About", href: "#about" },
+  { label: "Visit Us", href: "#visit" },
 ];
 
 export const heroData = {
-  badge: "Single-Origin Micro-Roastery · Seattle, WA",
+  badge: "Single-Origin Micro-Roastery · Carter Rd, Bandra",
   headline: "Good coffee. No rush.",
   description:
     "A light-filled sanctuary designed for slow mornings, thoughtful brewing, and warm conversations. Every cup is extracted with quiet precision from ethically sourced microlots.",
@@ -52,10 +58,27 @@ export const heroData = {
     { value: "36h", label: "Cold Ferment Pastry" },
     { value: "100%", label: "Direct Farm Trade" },
   ],
+  sellingPoints: [
+    {
+      kicker: "01 / ROAST",
+      title: "Specialty Microlots",
+      desc: "Ethically traded single-origins scored 88+ Q-Grade."
+    },
+    {
+      kicker: "02 / BAKE",
+      title: "36-Hour Sourdough",
+      desc: "Normandy butter viennoiserie baked fresh every dawn."
+    },
+    {
+      kicker: "03 / SPACE",
+      title: "Mindful Sanctuary",
+      desc: "Solid white oak, sunlit reading nooks & garden patio."
+    }
+  ],
   image: "/images/hero-espresso.jpg",
   imageAlt: "Barista pouring a silky espresso shot into a handcrafted ceramic cup with morning light on wooden counters",
-  primaryCta: { label: "Explore Signature Menu", href: "#menu" },
-  secondaryCta: { label: "Plan Your Visit", href: "#visit" },
+  primaryCta: { label: "Explore the Menu", href: "#menu" },
+  secondaryCta: { label: "Find Us", href: "#visit" },
 };
 
 export const editorialPillars = [
@@ -296,11 +319,11 @@ export const galleryItems = [
 
 export const footerLinks = {
   navigation: [
-    { label: "Our Story", href: "#story" },
-    { label: "Craft & Roast", href: "#craft" },
-    { label: "Signature Menu", href: "#menu" },
-    { label: "Atmosphere & Gallery", href: "#atmosphere" },
-    { label: "Hours & Location", href: "#visit" },
+    { label: "Home", href: "#hero" },
+    { label: "Menu", href: "#menu" },
+    { label: "Ambiance", href: "#ambiance" },
+    { label: "About", href: "#about" },
+    { label: "Visit Us", href: "#visit" },
   ],
   socials: [
     { label: "Instagram", url: "https://instagram.com", handle: "@woatcafe" },

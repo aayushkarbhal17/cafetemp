@@ -17,54 +17,18 @@ export default function Footer() {
   };
 
   return (
-    <footer className="footer-section">
+    <footer className="footer-section" id="footer">
       <div className="container">
-        {/* Top Newsletter & Brand Note Banner */}
-        <div className="footer-newsletter-banner">
-          <div className="newsletter-text-col">
-            <span className="newsletter-kicker">THE MONTHLY POUR</span>
-            <h3 className="newsletter-title">Slow dispatches & seasonal harvests.</h3>
-            <p className="newsletter-desc">
-              Subscribe to receive our seasonal single-origin release notes, brewing guides, and invitations to private cupping sessions.
-            </p>
-          </div>
-
-          <div className="newsletter-form-col">
-            {subscribed ? (
-              <div className="newsletter-success" role="alert">
-                <span className="success-icon">✓</span>
-                <p>Welcome to the circle. Check your inbox for our latest brew guide.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="newsletter-form">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  required
-                  className="newsletter-input"
-                  aria-label="Email address for slow coffee newsletter"
-                />
-                <button type="submit" className="btn btn-primary newsletter-submit-btn">
-                  Join Circle
-                </button>
-              </form>
-            )}
-            <span className="newsletter-disclaimer">Zero spam. Sent only when a rare harvest lands.</span>
-          </div>
-        </div>
-
         {/* Main Footer Links & Info Grid */}
         <div className="footer-main-grid">
           {/* Brand Col */}
           <div className="footer-col footer-brand-col">
-            <a href="#" className="footer-brand" onClick={scrollToTop}>
-              <span className="brand-mark">WOAT</span>
-              <span className="brand-sub">Specialty Coffee & Slow Bakery</span>
+            <a href="#hero" className="footer-brand" onClick={scrollToTop}>
+              <span className="brand-mark">{cafeInfo.name}</span>
+              <span className="brand-sub">{cafeInfo.subtitle}</span>
             </a>
             <p className="footer-tagline">
-              “Good coffee. No rush.” An intentional sanctuary in Seattle’s Heritage Quarter.
+              “{cafeInfo.tagline}” A light-filled sanctuary on Carter Road dedicated to single-origin microlots, 36-hour sourdough, and warm conversations.
             </p>
             <div className="footer-social-links">
               {footerLinks.socials.map((s, idx) => (
@@ -101,24 +65,18 @@ export default function Footer() {
           <div className="footer-col">
             <h4 className="footer-col-title">Hours</h4>
             <div className="footer-hours-block">
-              <div className="footer-hour-row">
-                <span className="f-day">Mon – Fri</span>
-                <span className="f-time">7:00 AM – 6:00 PM</span>
-              </div>
-              <div className="footer-hour-row">
-                <span className="f-day">Sat – Sun</span>
-                <span className="f-time">8:00 AM – 7:00 PM</span>
-              </div>
-              <div className="footer-hour-row">
-                <span className="f-day">Fresh Bakery</span>
-                <span className="f-time">Daily at 7:00 AM</span>
-              </div>
+              {cafeInfo.hours.map((h, idx) => (
+                <div key={idx} className="footer-hour-row">
+                  <span className="f-day">{h.days}</span>
+                  <span className="f-time">{h.time}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Inquiries & Location Col */}
-          <div className="footer-col">
-            <h4 className="footer-col-title">Direct Contact</h4>
+          {/* Contact Col + Minimal Newsletter */}
+          <div className="footer-col footer-contact-col">
+            <h4 className="footer-col-title">Contact & Dispatch</h4>
             <div className="footer-contact-block">
               <p className="f-address">{cafeInfo.address.full}</p>
               <div className="f-contact-links">
@@ -138,13 +96,37 @@ export default function Footer() {
                 </a>
               </div>
             </div>
+
+            {/* Newsletter input */}
+            <div className="footer-newsletter-wrap">
+              {subscribed ? (
+                <div className="footer-newsletter-success" role="alert">
+                  ✓ Welcome to the circle.
+                </div>
+              ) : (
+                <form onSubmit={handleSubscribe} className="footer-mini-form">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Join the monthly pour"
+                    required
+                    className="footer-mini-input"
+                    aria-label="Email for seasonal releases"
+                  />
+                  <button type="submit" className="footer-mini-submit" aria-label="Subscribe">
+                    →
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
 
         {/* Bottom Legal & Back to Top */}
         <div className="footer-bottom-bar">
           <div className="footer-copyright">
-            © 2026 WOAT Café & Roastery. All rights reserved. Handcrafted with care.
+            © 2026 {cafeInfo.name}. All rights reserved. Handcrafted with care.
           </div>
           
           <button

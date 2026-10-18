@@ -13,18 +13,19 @@ export default function Visit() {
   return (
     <section className="visit-section" id="visit">
       <div className="container">
+        {/* Section Header */}
         <div className="visit-header">
           <span className="section-kicker">Find Our Sanctuary</span>
           <h2 className="section-heading">Visit Us</h2>
           <p className="section-subhead">
-            Step out of the city noise into our warm room. We keep natural light in the morning, quiet corners in the afternoon, and a warm cup ready for you.
+            Step out of the city noise into our light-filled room on Carter Road. Freshly baked pastries every dawn, slow pourovers, and quiet corners all day.
           </p>
         </div>
 
         <div className="visit-grid">
-          {/* Left Column: Hours, Location & Direct Inquiries */}
+          {/* Left Column: Hours, Location, Directions & Direct Inquiries */}
           <div className="visit-details-card">
-            {/* Hours Section */}
+            {/* Opening Hours */}
             <div className="visit-subblock">
               <div className="visit-subblock-title">
                 <span className="subblock-icon" aria-hidden="true">⏱</span>
@@ -43,11 +44,11 @@ export default function Visit() {
               </ul>
             </div>
 
-            {/* Address & Landmark */}
+            {/* Address & Actions */}
             <div className="visit-subblock">
               <div className="visit-subblock-title">
                 <span className="subblock-icon" aria-hidden="true">📍</span>
-                <h3>Location</h3>
+                <h3>Address & Location</h3>
               </div>
               <p className="address-text">{cafeInfo.address.full}</p>
               <p className="address-landmark">{cafeInfo.address.landmark}</p>
@@ -59,7 +60,7 @@ export default function Visit() {
                   rel="noopener noreferrer"
                   className="btn btn-primary visit-action-btn"
                 >
-                  <span>Open in Google Maps</span>
+                  <span>Get Directions</span>
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -70,7 +71,7 @@ export default function Visit() {
                   className="btn btn-secondary visit-action-btn"
                   aria-live="polite"
                 >
-                  {copied ? '✓ Address Copied' : 'Copy Address'}
+                  {copied ? '✓ Copied to Clipboard' : 'Copy Address'}
                 </button>
               </div>
             </div>
@@ -103,32 +104,32 @@ export default function Visit() {
             </div>
           </div>
 
-          {/* Right Column: Stylized Neighborhood Map & Arrival Guide */}
+          {/* Right Column: Stylized Compact Neighborhood Map & Sanctuary Amenities */}
           <div className="visit-map-card">
             <div className="stylized-map-header">
               <div className="map-badge">
                 <span className="status-live-dot"></span>
-                <span>Historic Cobblestone District</span>
+                <span>Bandra West · Promenade</span>
               </div>
-              <span className="map-transit-tag">2 min from Central Station</span>
+              <span className="map-transit-tag">Across from Old Library</span>
             </div>
 
-            {/* Stylized Minimalist Map Blueprint Canvas */}
-            <div className="stylized-map-canvas" aria-label="Visual map illustration of WOAT Cafe location">
+            {/* Stylized Minimalist Map Canvas */}
+            <div className="stylized-map-canvas" aria-label="Visual map illustration of WOAT Cafe on Carter Road">
               <div className="map-grid-pattern" aria-hidden="true"></div>
               
               {/* Street lines */}
               <div className="map-road road-horizontal">
-                <span className="road-name">Heritage Way</span>
+                <span className="road-name">Carter Road Promenade</span>
               </div>
               <div className="map-road road-vertical">
-                <span className="road-name">Market Street</span>
+                <span className="road-name">Market & 4th Street</span>
               </div>
               <div className="map-road road-diagonal">
-                <span className="road-name">Cobblestone Lane</span>
+                <span className="road-name">Ocean View Lane</span>
               </div>
 
-              {/* Surrounding Landmark Markers */}
+              {/* Landmark Markers */}
               <div className="map-landmark-marker marker-library">
                 <span className="landmark-dot"></span>
                 <span className="landmark-name">Old Library Square</span>
@@ -136,7 +137,7 @@ export default function Visit() {
 
               <div className="map-landmark-marker marker-station">
                 <span className="landmark-dot"></span>
-                <span className="landmark-name">Metro Central (Line 1)</span>
+                <span className="landmark-name">Carter Rd Amphitheatre</span>
               </div>
 
               {/* WOAT Cafe Pin */}
@@ -147,12 +148,12 @@ export default function Visit() {
                 </div>
                 <div className="pin-tooltip">
                   <strong>WOAT Café</strong>
-                  <span>42 Cobblestone Ln</span>
+                  <span>04 Carter Road</span>
                 </div>
               </div>
             </div>
 
-            {/* Amenities & Arrival Guidance */}
+            {/* Amenities Strip */}
             <div className="map-arrival-guide">
               <h4 className="guide-title">Sanctuary Amenities</h4>
               <div className="amenities-tags">
@@ -163,7 +164,7 @@ export default function Visit() {
                 ))}
               </div>
               <p className="transit-note">
-                <strong>Arrival:</strong> Metered 2-hour parking available on Market St. Bike racks stationed directly outside the front entrance.
+                <strong>Arrival:</strong> Metered parking along Carter Rd promenade. Dedicated bicycle racks directly outside our front entrance.
               </p>
             </div>
           </div>
